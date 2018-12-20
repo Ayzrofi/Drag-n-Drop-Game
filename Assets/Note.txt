@@ -1,0 +1,1 @@
+Use Scale game object tool to scale image in this projetc dont use ui scaling tool for scaling image answer / questions

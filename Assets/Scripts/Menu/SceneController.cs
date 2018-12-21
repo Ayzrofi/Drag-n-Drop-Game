@@ -64,4 +64,9 @@ public class SceneController : MonoBehaviour {
     {
         audioSrc.PlayOneShot(clip);
     }
+
+    public void DeleteAllData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scene/Menu_Select_Game.unity
     guid: 2d3887180e4c277458b220a5356a4329
   - enabled: 1
-    path: Assets/Scene/Birds.unity
-    guid: e7a9bacd3d2da0c46b1f4f98640c2f2e
-  - enabled: 1
     path: Assets/Scene/0_Dinosaur_A.unity
     guid: 0e2b9c8a6540e20498f6bee6277e29de
   - enabled: 1
@@ -23,6 +20,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/2_Farm2.unity
     guid: b75a0a963db2c164cb665f8c816e3b55
-  - enabled: 0
-    path: Assets/_New Random Method/Scene/RandomSlots.unity
-    guid: 30e19b22f8249c443abc05ef8dfc9fea
+  - enabled: 1
+    path: Assets/Scene/3_Wild.unity
+    guid: 2817522850c4ba4478a130d37b410ddd
+  - enabled: 1
+    path: Assets/Scene/4_Birds.unity
+    guid: e7a9bacd3d2da0c46b1f4f98640c2f2e
+  - enabled: 1
+    path: Assets/Scene/5_Wild2.unity
+    guid: 374a20ed60e60f3459fb937df097de0a
+  - enabled: 1
+    path: Assets/Scene/6_Birds2.unity
+    guid: 6a34284c2b656894dafe3558c08f082a
+  - enabled: 1
+    path: Assets/Scene/7_Dinosaur2.unity
+    guid: 052b931c58045c243b128c6f57bf2f68
+  - enabled: 1
+    path: Assets/Scene/8_Sea.unity
+    guid: 35af06ec95735714689d6d9c7a6aeffe

@@ -68,11 +68,11 @@ public class GameManajer : MonoBehaviour {
     }
     public void PlaySfx(AudioClip SfxClip)
     {
-        //if (audioSrc.isPlaying)
-        //    audioSrc.Stop();
+        if (audioSrc.isPlaying)
+            audioSrc.Stop();
         //Playing Sfx
         audioSrc.PlayOneShot(SfxClip);
-        Debug.Log(SfxClip);
+        //Debug.Log(SfxClip);
     }
 
     public void CreateParticleEffect(GameObject pos)
@@ -95,26 +95,26 @@ public class GameManajer : MonoBehaviour {
 
     private void GameEnd()
     {
-        Debug.Log("Loe Kalah Suuu");
+        //Debug.Log("Loe Kalah Suuu");
         GameOver = true;
 
         if (TimerSlider.value > ((MaxTime / 100) * 66) && TimerSlider.value < ((MaxTime / 100) * 100))
         {
-            Debug.Log("Yameteee senpaiiii");
+            //Debug.Log("Yameteee senpaiiii");
             menuWin.FinishGameMenu(3, true);
         } else
         if (TimerSlider.value > ((MaxTime / 100) * 33) && TimerSlider.value < ((MaxTime / 100) * 66))
         {
-            Debug.Log("yameroo senpaiiii");
+            //Debug.Log("yameroo senpaiiii");
             menuWin.FinishGameMenu(2, true);
         } else
         if (TimerSlider.value > ((MaxTime / 100) * 0) && TimerSlider.value < ((MaxTime / 100) * 33))
         {
-            Debug.Log("Dameeee senpaiiii");
+            //Debug.Log("Dameeee senpaiiii");
             menuWin.FinishGameMenu(1, true);
         } else
         {
-            Debug.Log("Ikeeeh");
+
             menuWin.FinishGameMenu(0, false);
         }
            

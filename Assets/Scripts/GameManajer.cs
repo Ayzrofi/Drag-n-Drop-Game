@@ -29,7 +29,7 @@ public class GameManajer : MonoBehaviour {
     private AudioSource audioSrc;
 
     public Slider TimerSlider;
-    [SerializeField]
+
     private float MaxTime = 60f;
 
     public MenuWinGame menuWin;
@@ -38,6 +38,8 @@ public class GameManajer : MonoBehaviour {
 
     private void Awake()
     {
+        MaxTime = 60f;
+
         if (audioSrc == null)
             audioSrc = GetComponent<AudioSource>();
 
@@ -95,26 +97,21 @@ public class GameManajer : MonoBehaviour {
 
     private void GameEnd()
     {
-        //Debug.Log("Loe Kalah Suuu");
         GameOver = true;
 
         if (TimerSlider.value > ((MaxTime / 100) * 66) && TimerSlider.value < ((MaxTime / 100) * 100))
         {
-            //Debug.Log("Yameteee senpaiiii");
             menuWin.FinishGameMenu(3, true);
         } else
         if (TimerSlider.value > ((MaxTime / 100) * 33) && TimerSlider.value < ((MaxTime / 100) * 66))
         {
-            //Debug.Log("yameroo senpaiiii");
             menuWin.FinishGameMenu(2, true);
         } else
         if (TimerSlider.value > ((MaxTime / 100) * 0) && TimerSlider.value < ((MaxTime / 100) * 33))
         {
-            //Debug.Log("Dameeee senpaiiii");
             menuWin.FinishGameMenu(1, true);
         } else
         {
-
             menuWin.FinishGameMenu(0, false);
         }
            

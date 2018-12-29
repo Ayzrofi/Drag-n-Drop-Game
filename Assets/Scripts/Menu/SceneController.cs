@@ -8,16 +8,32 @@ public class SceneController : MonoBehaviour {
     private Animator TransitionAnim;
     [SerializeField]
     private AudioSource audioSrc;
+    // for ads
+    public static int AdsCount = 2;
 
     private void Awake()
     {
         if (audioSrc == null)
             audioSrc = GetComponent<AudioSource>();
-       
+
+        if(AdsManajer.Instance != null)
+        {
+            AdsManajer.Instance.ShowBanner();
+            AdsManajer.Instance.LoadIntertisial();
+        }
     }
     // Next Scene/level
     public void LoadScene(string name)
     {
+        AdsCount--;
+        if (AdsCount <= 0)
+        {
+            if (AdsManajer.Instance != null)
+                AdsManajer.Instance.ShowIntertisial();
+
+            AdsCount = 2;
+        }
+        Debug.Log(AdsCount);
         StartCoroutine(StartLoadScene(name));
     }
 
@@ -33,6 +49,15 @@ public class SceneController : MonoBehaviour {
     // Restart/Play Again
     public void Restart()
     {
+        AdsCount--;
+        if (AdsCount <= 0)
+        {
+            if (AdsManajer.Instance != null)
+                AdsManajer.Instance.ShowIntertisial();
+
+            AdsCount = 2;
+        }
+        Debug.Log(AdsCount);
         StartCoroutine(StartRestart());
     }
     IEnumerator StartRestart()

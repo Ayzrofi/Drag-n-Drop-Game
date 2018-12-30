@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 2444e609a8ddc9646bedb6ed73437bdf
-timeCreated: 1544797222
+timeCreated: 1546084331
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: BG
+    21300002: Educations
+    21300004: Animals
+    21300006: Object
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -95,6 +98,48 @@ TextureImporter:
         y: 600
         width: 1282
         height: 771
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Educations
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 598
+        height: 601
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Animals
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 0
+        width: 600
+        height: 600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Object
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 603
+        height: 598
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -8,21 +8,21 @@ public class SceneController : MonoBehaviour {
     private Animator TransitionAnim;
     [SerializeField]
     private AudioSource audioSrc;
-    // for ads
+    // for ads counter
     public static int AdsCount = 2;
 
     private void Awake()
     {
         if (audioSrc == null)
             audioSrc = GetComponent<AudioSource>();
-
+        // ngecek refrensi dari ads manajer
         if(AdsManajer.Instance != null)
         {
             AdsManajer.Instance.ShowBanner();
             AdsManajer.Instance.LoadIntertisial();
         }
     }
-    // Next Scene/level
+    // function untuk Next Scene/level 
     public void LoadScene(string name)
     {
         AdsCount--;
@@ -84,14 +84,19 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds(1);
         Application.Quit();
     }
-
+    // untuk memainkan audio sfx
     public void PlaySfx(AudioClip clip)
     {
         audioSrc.PlayOneShot(clip);
     }
-
+    // untuk menghapus semua data player
     public void DeleteAllData()
     {
         PlayerPrefs.DeleteAll();
+    }
+    public void RateGame()
+    {
+        Application.OpenURL("market://details?id=com.blitzdroid.puzzlekids.drugdrop");
+        Debug.Log(Application.productName);
     }
 }

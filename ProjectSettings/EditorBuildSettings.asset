@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scene/Menu_Select_Game.unity
     guid: 2d3887180e4c277458b220a5356a4329
   - enabled: 1
+    path: Assets/Scene/Menu_Select_1.unity
+    guid: 5e900b1a24ef30d41a498ff4535c360a
+  - enabled: 1
+    path: Assets/Scene/Menu_Select_2.unity
+    guid: 6ca12aa4f5f9bc244b48c76dd664197a
+  - enabled: 1
+    path: Assets/Scene/Menu_Select_3.unity
+    guid: 712a01ee8a5f0094d9d336b591188218
+  - enabled: 1
     path: Assets/Scene/0_Dinosaur_A.unity
     guid: 0e2b9c8a6540e20498f6bee6277e29de
   - enabled: 1

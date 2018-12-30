@@ -27,19 +27,19 @@ public class GameManajer : MonoBehaviour {
     private int ammountOfTheAnswer;
     [SerializeField]
     private AudioSource audioSrc;
-
+    [Header("Timer Componet")]
     public Slider TimerSlider;
-
+    public Text TimeText;
     private float MaxTime = 60f;
-
+    [Header("Menu win Game Componet")]
     public MenuWinGame menuWin;
 
     public GameObject CorrectParticle;
 
     private void Awake()
     {
-        MaxTime = 60f;
-
+        MaxTime = 91f;
+        TimeText.text = MaxTime.ToString();
         if (audioSrc == null)
             audioSrc = GetComponent<AudioSource>();
 
@@ -48,10 +48,6 @@ public class GameManajer : MonoBehaviour {
         
         TimerSlider.maxValue = MaxTime;
         TimerSlider.value = TimerSlider.maxValue;
-
-        //Debug.Log((MaxTime / 100) * 100);
-        //Debug.Log((MaxTime / 100) * 66);
-        //Debug.Log((MaxTime / 100) * 33);
     }
 
     private void Update()
@@ -59,6 +55,7 @@ public class GameManajer : MonoBehaviour {
         if (!GameOver)
         {
             TimerSlider.value -= Time.deltaTime;
+            TimeText.text = TimerSlider.value.ToString("f0");
             if (TimerSlider.value <= 0)
             {
                 GameEnd();
@@ -74,14 +71,13 @@ public class GameManajer : MonoBehaviour {
             audioSrc.Stop();
         //Playing Sfx
         audioSrc.PlayOneShot(SfxClip);
-        //Debug.Log(SfxClip);
     }
-
+    // untuk memunculkan particle effect
     public void CreateParticleEffect(GameObject pos)
     {
         Instantiate(CorrectParticle, pos.transform ,false);
     }
-
+    // untuk menghitung sisa pertanyaan
     public void AnswerCounter()
     {
         if(ammountOfTheAnswer > 0)
@@ -94,7 +90,7 @@ public class GameManajer : MonoBehaviour {
             GameEnd();
         }
     }
-
+    // kondisi ketika game selesai
     private void GameEnd()
     {
         GameOver = true;
@@ -114,7 +110,5 @@ public class GameManajer : MonoBehaviour {
         {
             menuWin.FinishGameMenu(0, false);
         }
-           
-
     }
 }

@@ -58,7 +58,7 @@ public class ImageControllerV2 : MonoBehaviour {
             transform.localScale = IdleSize;
         }
     }
-
+    // kondisi ketika mouse exit
     private void OnMouseExit()
     {
         if (!IsLocked && !IsComplite)
@@ -66,7 +66,7 @@ public class ImageControllerV2 : MonoBehaviour {
             transform.localScale = StartSize;
         }    
     }
-
+    // kondisi ketika mouse di drag
     private void OnMouseDrag()
     {
         if (!IsComplite)

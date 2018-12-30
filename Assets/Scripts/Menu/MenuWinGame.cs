@@ -20,6 +20,8 @@ public class MenuWinGame : MonoBehaviour {
     public AudioSource bgmMusic;
     [Header("Id This Level (Very Important !!!)")]
     public string LevelId;
+    public GameObject NextButton;
+    public GameObject Keterangan;
 
     private void Awake()
     {
@@ -30,7 +32,7 @@ public class MenuWinGame : MonoBehaviour {
         if (TransitionAnim == null)
             TransitionAnim = GameObject.Find("Scene Transitions").GetComponent<Animator>();
     }
-
+    // function yg di panggil ketika semua pertanyaan telah dijawab
     public void FinishGameMenu(int AmmountOfTheStar, bool win)
     {
         //MenuGame.SetActive(true);
@@ -47,40 +49,37 @@ public class MenuWinGame : MonoBehaviour {
             {
                 case 1:
                     StarImage.sprite = Star1;
+                    NextButton.SetActive(false);
+                    Keterangan.SetActive(true);
                     break;
                 case 2:
                     StarImage.sprite = Star2;
+                    NextButton.SetActive(false);
+                    Keterangan.SetActive(true);
                     break;
                 case 3:
                     StarImage.sprite = Star3;
+                    NextButton.SetActive(true);
+                    Keterangan.SetActive(false);
                     break;
                 default:
                     StarImage.sprite = Star0;
-                    break;
+                    NextButton.SetActive(false);
+                    Keterangan.SetActive(true);
+                    break; 
             }
-            if(AmmountOfTheStar > PlayerPrefs.GetInt(LevelId))
+            if (AmmountOfTheStar > PlayerPrefs.GetInt(LevelId))
             {
                 PlayerPrefs.SetInt(LevelId, AmmountOfTheStar);
             }
-           
         }
         else
         {
             resultText.text = "You Lose !!!";
             GameManajer.TheInstanceOfGameManajer.PlaySfx(LoseGameSfx);
             StarImage.sprite = Star0;
+            NextButton.SetActive(false);
+            Keterangan.SetActive(true);
         }
     }
-
-    //public void LoadScene(string WhatNameSceneToLoad)
-    //{
-    //    StartCoroutine(StartLoadScene(WhatNameSceneToLoad));
-    //}
-
-    //IEnumerator StartLoadScene(string theSceen)
-    //{
-    //    TransitionAnim.SetTrigger("End");
-    //    yield return new WaitForSeconds(1f);
-    //    SceneManager.LoadScene(theSceen);
-    //}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AnswerSpawner : MonoBehaviour {
+    // singleton answerspawnwer
     private static AnswerSpawner instance;
     public static AnswerSpawner TheInstanceOfAnswerSpawner
     {
@@ -15,6 +16,7 @@ public class AnswerSpawner : MonoBehaviour {
             return instance;
         }
     }
+    // refrensi untuk semua pertanyaan di scene
     [Header("All Answer Image GameObject")]
     public List<GameObject> AnswerObj = new List<GameObject>();
 
@@ -27,7 +29,7 @@ public class AnswerSpawner : MonoBehaviour {
 
         SpawnNewAnswer();
     }
-
+    // function untuk spawning pertanyaan baru
     public void SpawnNewAnswer()
     {
         if(AnswerObj.Count > 0)

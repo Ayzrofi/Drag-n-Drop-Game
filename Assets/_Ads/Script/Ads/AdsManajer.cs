@@ -5,6 +5,7 @@ using admob;
 
 public class AdsManajer : MonoBehaviour {
     public static AdsManajer Instance;
+    public string IdAplikasi;
     public string IdBanner;
     public string IdIntertisial;
 
@@ -23,6 +24,7 @@ public class AdsManajer : MonoBehaviour {
 #elif UNITY_ANDROID
         Admob.Instance().initAdmob(IdBanner, IdIntertisial);
         Admob.Instance().loadInterstitial();
+        Admob.Instance().initSDK(IdAplikasi);
 #endif
     }
 

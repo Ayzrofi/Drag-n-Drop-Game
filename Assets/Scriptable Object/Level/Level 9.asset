@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d180c570a227c44a27c7c0b420a34b, type: 3}
+  m_Name: Level 9
+  m_EditorClassIdentifier: 
+  LevelId: Level_9
+  LevelBackgroundImage: {fileID: 21300000, guid: fa03cb21f0e92c34ba57e2d475b593c3,
+    type: 3}
+  Pertanyaan:
+  - {fileID: 21300000, guid: b6e26dad4b33ab84893667854c282983, type: 3}
+  - {fileID: 21300000, guid: add4bea9047edec45829fd9a9b321946, type: 3}
+  - {fileID: 21300000, guid: a95eb8ca495a0114d9a3755850a48b39, type: 3}
+  - {fileID: 21300000, guid: d940942d00107404dbe337e9aa474fd7, type: 3}
+  - {fileID: 21300000, guid: 21c6984d34f149642a68dd268de3a0f8, type: 3}
+  Jawaban:
+  - SpriteJawaban: {fileID: 21300000, guid: 28df8bdd5df0ed342a65e7b7061f8287, type: 3}
+    SfxJawaban: {fileID: 8300000, guid: 63466fbc63839f146b5df7757e68070d, type: 3}
+  - SpriteJawaban: {fileID: 21300000, guid: 977560cdef96aec4a8caf509909e58f3, type: 3}
+    SfxJawaban: {fileID: 8300000, guid: 6c2aa8e6e3b385d40b66ff847fe8320c, type: 3}
+  - SpriteJawaban: {fileID: 21300000, guid: 0dfab1bb947ba214a85d5886341393ba, type: 3}
+    SfxJawaban: {fileID: 8300000, guid: 922b6e27b6c39ed46a7aef4b03219d17, type: 3}
+  - SpriteJawaban: {fileID: 21300000, guid: 2a6403faec488504faa5a43bbdb6733d, type: 3}
+    SfxJawaban: {fileID: 8300000, guid: 0c2e4391067e8e749a82c8c63ef43c22, type: 3}
+  - SpriteJawaban: {fileID: 21300000, guid: f032be4cd9be0d4428a201402210cb8a, type: 3}
+    SfxJawaban: {fileID: 8300000, guid: 5f00f50302e50d546aec1d7be2ec6a90, type: 3}

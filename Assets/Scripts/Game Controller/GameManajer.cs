@@ -7,8 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(MenuWinGame))]
 public class GameManajer : MonoBehaviour {
-    [Header("Check This if You Want To Use Spawn Answer Version Gameplay")]
-    public bool UsingAnswerSpawnerScript;
+    //[Header("Check This if You Want To Use Spawn Answer Version Gameplay")]
+    //public bool UsingAnswerSpawnerScript;
     private static GameManajer Gm;
     public static GameManajer TheInstanceOfGameManajer
     {
@@ -22,8 +22,9 @@ public class GameManajer : MonoBehaviour {
 
     [HideInInspector]
     public bool GameOver = false;
-    [SerializeField]
+
     [Header("Ammount All Answer In This Level")]
+    [SerializeField]
     private int ammountOfTheAnswer;
     [SerializeField]
     private AudioSource audioSrc;

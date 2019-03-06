@@ -9,15 +9,15 @@ public class ImageControllerV2 : MonoBehaviour {
     public Tags ItemTag = new Tags();
     public Transform targetParent;
     // ment=yimpan posisi awal image
-    Vector2 StartPos;
+    Vector3 StartPos;
     // variabel untuk menentukan posisi target
     Vector2 TargetPos;
     // untuk menentukan posisi input pada layar android
     float DeltaX, DeltaY;
     // untuk menentukan apakah jawaban itu sudah terkunci dan apakah sudah complite
     bool IsLocked, IsComplite;
-    [SerializeField]
-    AudioClip SFX,WrongAnswerSFX;
+
+    public AudioClip SFX,WrongAnswerSFX;
 
     Vector3 StartSize, IdleSize, TargetSize;
 
@@ -28,6 +28,7 @@ public class ImageControllerV2 : MonoBehaviour {
     [Range(0,5)]
     private float timeToAdd;
 
+    bool IsMoving;
     private void Start()
     {
         // deklarasi posisi awal
@@ -45,6 +46,18 @@ public class ImageControllerV2 : MonoBehaviour {
         if(targetParent == null)
         {
             targetParent = transform.parent.parent.parent;
+        }
+    }
+
+    private void Update()
+    {
+        if (IsMoving)
+        {
+            transform.position = Vector2.Lerp(transform.position, StartPos, 0.1f);
+            if(transform.position == StartPos)
+            {
+                IsMoving = false;
+            }
         }
     }
 
@@ -85,15 +98,16 @@ public class ImageControllerV2 : MonoBehaviour {
             if (!IsComplite)
             {
                 AnswerComplite(TargetPos,TargetSize);
-                if (GameManajer.TheInstanceOfGameManajer.UsingAnswerSpawnerScript)
-                {
-                    AnswerSpawner.TheInstanceOfAnswerSpawner.SpawnNewAnswer();
-                }
+                //if (GameManajer.TheInstanceOfGameManajer.UsingAnswerSpawnerScript)
+                //{
+                //    AnswerSpawner.TheInstanceOfAnswerSpawner.SpawnNewAnswer();
+                //}
             }
         }
         else
         {
-            transform.position = StartPos;
+            IsMoving = true;
+            //transform.position = StartPos;
             transform.SetParent(Parent);
             GameManajer.TheInstanceOfGameManajer.PlaySfx(WrongAnswerSFX);
         }
@@ -107,6 +121,7 @@ public class ImageControllerV2 : MonoBehaviour {
         //Jawaban.instance.createQuestion();
         transform.localScale = size;
         IsComplite = true;
+        IsMoving = false;
         GameManajer.TheInstanceOfGameManajer.CreateParticleEffect(this.gameObject);
         GameManajer.TheInstanceOfGameManajer.PlaySfx(SFX);
         GameManajer.TheInstanceOfGameManajer.TimerSlider.value += timeToAdd;

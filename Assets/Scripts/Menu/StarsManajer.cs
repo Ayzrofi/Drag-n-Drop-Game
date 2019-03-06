@@ -2,20 +2,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StarsManajer : MonoBehaviour {
-    public string levelID;
+    [SerializeField]
+    private AudioSource audioSrc;
+    public AudioClip ButtonAudioSfx;
+    [SerializeField]
+    private string LevelToLoad;
+    private string levelID = "Level_";
+    [SerializeField]
+    [Header("Animasi Transisi")]
+    private Animator TransitionAnim;
     [Header("Stars Sprite")]
     public Sprite Star_0;
     public Sprite Star_1;
     public Sprite Star_2;
     public Sprite Star_3;
+    [Header("Buttons Game Object")]
     public Button[] LevelButton ;
+    [Header("Lock Image Game Object")]
     public GameObject[] LockImage;
     [Header("Stars Image Game Object")]
     public List<Image> StarsImage = new List<Image>();
-    
+
+
+    private void Awake()
+    {
+        if (audioSrc == null)
+            audioSrc = GetComponent<AudioSource>();
+
+        if (AdsManajer.Instance != null)
+        {
+            AdsManajer.Instance.ShowBanner();
+            AdsManajer.Instance.LoadIntertisial();
+        }
+    }
+
     private void Start()
     {
         LevelButton[0].interactable = true;
@@ -23,9 +47,12 @@ public class StarsManajer : MonoBehaviour {
         // loop untuk unlock system
         for (int i = 0 ; i < LevelButton.Length; i++)
         {
-
+            int level = i;
+            LevelButton[i].onClick.AddListener(() => LoadMainGame(level));
+            LevelButton[i].onClick.AddListener(() => PlaySfx(ButtonAudioSfx));
             if (PlayerPrefs.GetInt(levelID + i) == 3)
             {
+                
                 if (i < LevelButton.Length - 1)
                 {
                     LevelButton[i + 1].interactable = true;
@@ -66,5 +93,43 @@ public class StarsManajer : MonoBehaviour {
         }
     }
 
+    public void LoadMainGame(int Lvl)
+    {
+        if (AdsManajer.Instance != null)
+        {
+            AdsManajer.Instance.ShowIntertisial();
+            AdsManajer.Instance.LoadIntertisial();
+        }
+
+        LoadLevel.WhatTheLevel = Lvl;
+        Debug.Log(Lvl);
+        StartCoroutine(StartLoadScene(LevelToLoad));
+        
+    }
+
+    public void LoadScene(string name)
+    {
+        if (AdsManajer.Instance != null)
+            AdsManajer.Instance.ShowIntertisial();
+
+        StartCoroutine(StartLoadScene(name));
+    }
+
+
+    IEnumerator StartLoadScene(string SceneName)
+    {
+        if (TransitionAnim != null)
+        {
+            TransitionAnim.SetTrigger("End");
+        }
+        PlaySfx(ButtonAudioSfx);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneName);
+    }
+
+    public void PlaySfx(AudioClip clip)
+    {
+        audioSrc.PlayOneShot(clip);
+    }
 
 }

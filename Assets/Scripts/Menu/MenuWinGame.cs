@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuWinGame : MonoBehaviour {
+    [Tooltip("Semua Game Object Pertanyaan")]
     public GameObject AllAnswer;
-
+    [Tooltip("Win / Lose text")]
     public Text resultText;
-    [Header("Star Result Var")]
+    [Header("Star Ranking Component")]
     public Image StarImage;
     public Sprite Star0, Star1, Star2, Star3;
     public GameObject ParticleEffect;
@@ -18,7 +19,7 @@ public class MenuWinGame : MonoBehaviour {
     public AudioClip WinGameSfx;
     public AudioClip LoseGameSfx;
     public AudioSource bgmMusic;
-    [Header("Id This Level (Very Important !!!)")]
+    [Header("Menu Win Game component")]
     public string LevelId;
     public GameObject NextButton;
     public GameObject Keterangan;
@@ -28,7 +29,7 @@ public class MenuWinGame : MonoBehaviour {
         //MenuGame.transform.localScale = new Vector3(0, 0, 0);
         //Debug.Log(MenuGame.transform.localScale);
         //MenuGame.SetActive(false);
-
+        Debug.Log(PlayerPrefs.GetInt(LoadLevel.TheInstanceOfLoadLevel.TheLevel[LoadLevel.WhatTheLevel].LevelId));
         if (TransitionAnim == null)
             TransitionAnim = GameObject.Find("Scene Transitions").GetComponent<Animator>();
     }
@@ -68,9 +69,10 @@ public class MenuWinGame : MonoBehaviour {
                     Keterangan.SetActive(true);
                     break; 
             }
-            if (AmmountOfTheStar > PlayerPrefs.GetInt(LevelId))
+            if (AmmountOfTheStar > PlayerPrefs.GetInt(LoadLevel.TheInstanceOfLoadLevel.TheLevel[LoadLevel.WhatTheLevel].LevelId))
             {
-                PlayerPrefs.SetInt(LevelId, AmmountOfTheStar);
+                PlayerPrefs.SetInt(LoadLevel.TheInstanceOfLoadLevel.TheLevel[LoadLevel.WhatTheLevel].LevelId, AmmountOfTheStar);
+                
             }
         }
         else
